@@ -24,7 +24,7 @@ class ViewController: UIViewController, UITableViewDataSource {
       let departments = (UIApplication.shared.delegate as! AppDelegate).departments
       let name = Array(departments)[index].value(forKey:"name") as! String
       
-      let cell = tableView.dequeueReusableCell(withIdentifier: "cellTypeIdentifier", for: indexPath)
+      let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
    
       // Configure the cell’s contents.
       cell.textLabel!.text = name
