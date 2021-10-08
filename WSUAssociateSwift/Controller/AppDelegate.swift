@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    
    var window: UIWindow?
    var employees = Set<NSObject>()
-   var departments = Set<Department>()
+   var departments = Set<NSObject>()
    
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       
@@ -61,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    private func prepareDepartmentsData() {
       departments = [
          Department("Executive"),
+        NSDictionary(dictionary: ["name" : "Contractors"]),
          Department("Operations"),
          Department("Engineering"),
          Department("Sales"),

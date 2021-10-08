@@ -16,7 +16,13 @@ class ViewController: UIViewController, UITableViewDataSource {
    }
    
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return (UIApplication.shared.delegate as! AppDelegate).departments.count
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    if(1 == tableView.tag){
+        return delegate.employees.count
+    }
+    return delegate.departments.count
+      //return (UIApplication.shared.delegate as! AppDelegate).departments.count
+        //number of employees or departments
    }
    
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
