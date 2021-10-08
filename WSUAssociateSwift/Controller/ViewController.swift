@@ -8,6 +8,8 @@
 
 import UIKit
 
+//THIS IS A TEST OF THE EMERGENCY BROADCAST SYSTEM
+
 class ViewController: UIViewController, UITableViewDataSource {
    
    override func viewDidLoad() {
