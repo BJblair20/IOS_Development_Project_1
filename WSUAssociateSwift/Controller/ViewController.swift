@@ -8,7 +8,6 @@
 
 import UIKit
 
-//THIS IS A TEST OF THE EMERGENCY BROADCAST SYSTEM
 
 class ViewController: UIViewController, UITableViewDataSource {
    
@@ -28,14 +27,32 @@ class ViewController: UIViewController, UITableViewDataSource {
    }
    
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let index = indexPath.row
+    
+    let index = indexPath.row
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
+    
+    //set up employee table
+    if(1 == tableView.tag){
+        let employees = (UIApplication.shared.delegate as! AppDelegate).employees
+        let lastName = Array(employees)[index].value(forKey:"lastName") as! String
+        let firstName = Array(employees)[index].value(forKey:"firstName") as! String
+     
+        // Configure the cell’s contents.
+        cell.textLabel!.text = lastName + ", " + firstName
+        
+    }else{
+    //set up department table
       let departments = (UIApplication.shared.delegate as! AppDelegate).departments
       let name = Array(departments)[index].value(forKey:"name") as! String
+        
+      let sortedNames = name.sorted()
       
-      let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
-   
+
+        cell.textLabel!.text = name
+    }
       // Configure the cell’s contents.
-      cell.textLabel!.text = name
+      
       return cell
    }
 }
