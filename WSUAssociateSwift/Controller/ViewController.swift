@@ -14,8 +14,16 @@ class ViewController: UIViewController, UITableViewDataSource {
    override func viewDidLoad() {
       super.viewDidLoad()
       // Do any additional setup after loading the view.
+    
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    let employees = delegate.employees
+    print(employees)
+    //let lastName = Array(employees)[index].value(forKey:"lastName") as! String
+    
    }
    
+    
+    //count number of cells for each table
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let delegate = UIApplication.shared.delegate as! AppDelegate
     if(1 == tableView.tag){
@@ -26,6 +34,8 @@ class ViewController: UIViewController, UITableViewDataSource {
         //number of employees or departments
    }
    
+    
+    //fill each cell of the array
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let index = indexPath.row
