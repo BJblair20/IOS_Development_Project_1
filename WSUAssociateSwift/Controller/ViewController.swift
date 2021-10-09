@@ -9,18 +9,32 @@
 import UIKit
 
 
+
 class ViewController: UIViewController, UITableViewDataSource {
    
+   private var departmentsArray=[String]()
+    
    override func viewDidLoad() {
       super.viewDidLoad()
+      makeDepartmentArray()
       // Do any additional setup after loading the view.
     
-    let delegate = UIApplication.shared.delegate as! AppDelegate
-    let employees = delegate.employees
-    print(employees)
-    //let lastName = Array(employees)[index].value(forKey:"lastName") as! String
     
    }
+    
+    func makeDepartmentArray(){
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let departments = delegate.departments
+        //var departmentArray=[String]()
+        
+        for department in departments{
+            let depo = department.value(forKey:"name") as! String
+            departmentsArray.append(depo)
+            
+        }
+        
+        departmentsArray.sort()
+    }
    
     
     //count number of cells for each table
@@ -53,12 +67,8 @@ class ViewController: UIViewController, UITableViewDataSource {
         
     }else{
     //set up department table
-      let departments = (UIApplication.shared.delegate as! AppDelegate).departments
-      let name = Array(departments)[index].value(forKey:"name") as! String
+      let name = departmentsArray[index]
         
-      let sortedNames = name.sorted()
-      
-
         cell.textLabel!.text = name
     }
       // Configure the cell’s contents.
