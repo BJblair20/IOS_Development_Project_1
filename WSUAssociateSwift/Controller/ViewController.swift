@@ -13,26 +13,50 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource {
    
    private var departmentsArray=[String]()
+   private var employeesArray=[String]()
     
    override func viewDidLoad() {
       super.viewDidLoad()
       makeDepartmentArray()
+      makeEmployeeArray()
       // Do any additional setup after loading the view.
     
     
    }
     
     func makeDepartmentArray(){
+        
+        //import set from model
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let departments = delegate.departments
-        //var departmentArray=[String]()
         
+        //iterate throught the set and append each entry to the array
         for department in departments{
             let depo = department.value(forKey:"name") as! String
             departmentsArray.append(depo)
             
         }
         
+        //sort the array
+        departmentsArray.sort()
+    }
+    
+    func makeEmployeeArray(){
+        
+        //import set from model
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let employees = delegate.employees
+        
+        //iterate throught the set and append each entry to the array
+        for employee in employees{
+            let name1 = employee.value(forKey:"firstName") as! String
+            let name2 = employee.value(forKey:"lastName") as! String
+            var fullName = name2 + ", " + name1
+            departmentsArray.append(fullName)
+            
+        }
+        
+        //sort the array
         departmentsArray.sort()
     }
    
