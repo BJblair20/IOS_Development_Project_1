@@ -12,16 +12,16 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
    
+   //global variables for the arrays that control tables
    private var departmentsArray=[String]()
    private var employeesArray=[String]()
     
    override func viewDidLoad() {
       super.viewDidLoad()
+    
+      //call array methods
       makeDepartmentArray()
       makeEmployeeArray()
-      // Do any additional setup after loading the view.
-    
-    
    }
     
     func makeDepartmentArray(){
@@ -64,12 +64,12 @@ class ViewController: UIViewController, UITableViewDataSource {
     //count number of cells for each table
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let delegate = UIApplication.shared.delegate as! AppDelegate
+    
+    //return proper number of cells for the table
     if(1 == tableView.tag){
         return delegate.employees.count
     }
     return delegate.departments.count
-      //return (UIApplication.shared.delegate as! AppDelegate).departments.count
-        //number of employees or departments
    }
    
     
