@@ -52,12 +52,12 @@ class ViewController: UIViewController, UITableViewDataSource {
             let name1 = employee.value(forKey:"firstName") as! String
             let name2 = employee.value(forKey:"lastName") as! String
             var fullName = name2 + ", " + name1
-            departmentsArray.append(fullName)
+            employeesArray.append(fullName)
             
         }
         
         //sort the array
-        departmentsArray.sort()
+        employeesArray.sort()
     }
    
     
@@ -82,22 +82,22 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     //set up employee table
     if(1 == tableView.tag){
-        let employees = (UIApplication.shared.delegate as! AppDelegate).employees
-        let lastName = Array(employees)[index].value(forKey:"lastName") as! String
-        let firstName = Array(employees)[index].value(forKey:"firstName") as! String
+        let fullName=employeesArray[index]
      
         // Configure the cell’s contents.
-        cell.textLabel!.text = lastName + ", " + firstName
+        cell.textLabel!.text = fullName
+        return cell
         
     }else{
     //set up department table
       let name = departmentsArray[index]
         
         cell.textLabel!.text = name
+        return cell
     }
       // Configure the cell’s contents.
       
-      return cell
+      
    }
 }
 
